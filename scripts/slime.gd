@@ -1,4 +1,5 @@
 extends Node2D
+@onready var game_manager = %GameManager
 
 const SPEED = 60
 var direction = 1
