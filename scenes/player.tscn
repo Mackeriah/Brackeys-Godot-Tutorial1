@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b7tdj2pbtbrmx" path="res://assets/sprites/knight.png" id="1_aumk7"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hlusk"]
-[ext_resource type="AudioStream" uid="uid://b1h83pxlrvlqe" path="res://assets/sounds/playerJump.wav" id="3_q8lur"]
+[ext_resource type="AudioStream" uid="uid://0pjj1uq7b3lu" path="res://assets/sounds/PlayerJump.wav" id="3_xj24r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a14ra"]
 atlas = ExtResource("1_aumk7")
@@ -225,7 +225,7 @@ position = Vector2(1, -5)
 shape = SubResource("CircleShape2D_ejmlv")
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_q8lur")
+stream = ExtResource("3_xj24r")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

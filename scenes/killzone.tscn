@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://uk6o5svmyajp"]
+[gd_scene load_steps=6 format=3 uid="uid://uk6o5svmyajp"]
 
 [ext_resource type="Script" path="res://scripts/killzone.gd" id="1_2mohm"]
+[ext_resource type="AudioStream" uid="uid://dxk0pchfky7nw" path="res://assets/sounds/OhDear.wav" id="2_rrbli"]
+
+[sub_resource type="Animation" id="Animation_1bxvv"]
+resource_name = "PlayerDeathSound"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerDeathSound:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_era8l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerDeathSound:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_voxuf"]
+_data = {
+"PlayerDeathSound": SubResource("Animation_1bxvv"),
+"RESET": SubResource("Animation_era8l")
+}
 
 [node name="killzone" type="Area2D"]
 collision_mask = 2
@@ -9,6 +46,15 @@ script = ExtResource("1_2mohm")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
+
+[node name="PlayerDeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_rrbli")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_voxuf")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
