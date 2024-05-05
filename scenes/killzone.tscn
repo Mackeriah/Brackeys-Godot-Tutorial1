@@ -49,6 +49,7 @@ one_shot = true
 
 [node name="PlayerDeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_rrbli")
+max_distance = 100000.0
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
